@@ -1,0 +1,3 @@
+must be included
+- name: Build
+  run: npx expo export -p web
