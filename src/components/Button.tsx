@@ -6,7 +6,7 @@ type ButtonProps = {
     textColor?: string;
 }
 
-export function WhiteButton({label, backgroundColor = "#FFFFFFF", textColor = "E30147"}: ButtonProps) {
+export function Button({label, backgroundColor = "#FFFFFFF", textColor = "E30147"}: ButtonProps) {
     return (
         <Pressable style={[styles.button, {backgroundColor}]}>
             <Text style={[styles.label, {color: textColor}]}>
