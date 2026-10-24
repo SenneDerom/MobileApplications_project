@@ -2,12 +2,14 @@ import {Pressable, Text, StyleSheet} from "react-native";
 
 type ButtonProps = {
     label: string;
+    backgroundColor?: string;
+    textColor?: string;
 }
 
-export function WhiteButton({label}: ButtonProps) {
+export function WhiteButton({label, backgroundColor = "#FFFFFFF", textColor = "E30147"}: ButtonProps) {
     return (
-        <Pressable style={styles.button}>
-            <Text style={styles.label}>
+        <Pressable style={[styles.button, {backgroundColor}]}>
+            <Text style={[styles.label, {color: textColor}]}>
                 {label}
             </Text>
         </Pressable>
@@ -19,13 +21,11 @@ const styles = StyleSheet.create({
         width: "100%",
         minHeight: 48,
         paddingHorizontal: 24,
-        backgroundColor: "#FFFFFF",
         borderRadius: 14,
         justifyContent: "center",
         alignItems: "center",
     },
     label: {
-        color: "#E30147",
         fontSize: 15,
         fontFamily: "WorkSans_600SemiBold",
         lineHeight: 22,
