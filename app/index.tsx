@@ -12,7 +12,7 @@ export default function HomeScreen() {
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
           <Image
-            source={require("../../public/icons/logo_ucll.png")}
+            source={require("../public/icons/logo_ucll.png")}
             style={styles.logo}
             resizeMode="contain"
             accessibilityLabel="UCLL logo"
@@ -28,7 +28,7 @@ export default function HomeScreen() {
 
         <View style={styles.buttons}>
           <Button label="Start de rondleiding" />
-          <Button label="Bekijk het programma" textColor={COLORS.onPrimary} backgroundColor={COLORS.primary} borderColor={COLORS.onPrimary} />
+          <Button label="Bekijk de uitleg" textColor={COLORS.onPrimary} backgroundColor={COLORS.primary} borderColor={COLORS.onPrimary} />
         </View>
       </SafeAreaView>
   );
