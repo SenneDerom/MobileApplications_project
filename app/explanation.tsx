@@ -7,7 +7,7 @@ const COLORS = {
     onPrimary: "#FFFFFF",
 };
 
-export function ExplanationScreen() {
+export default function ExplanationScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>

@@ -5,11 +5,12 @@ type ButtonProps = {
     backgroundColor?: string;
     textColor?: string;
     borderColor?: string;
+    onPress?: () => void;
 }
 
-export function Button({label, backgroundColor = "#FFFFFF", textColor = "#E30147", borderColor}: ButtonProps) {
+export function Button({label, backgroundColor = "#FFFFFF", textColor = "#E30147", borderColor, onPress}: ButtonProps) {
     return (
-        <Pressable style={[styles.button, {backgroundColor}, borderColor !== undefined && {borderWidth: 1, borderColor}]}>
+        <Pressable onPress={onPress} style={[styles.button, {backgroundColor}, borderColor !== undefined && {borderWidth: 1, borderColor}]}>
             <Text style={[styles.label, {color: textColor}]}>
                 {label}
             </Text>

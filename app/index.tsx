@@ -1,6 +1,7 @@
 import {View, Text, StyleSheet, Image} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button } from "@/components/Button";
+import {router} from "expo-router";
 
 const COLORS = {
   primary: "#E30147",
@@ -28,7 +29,7 @@ export default function HomeScreen() {
 
         <View style={styles.buttons}>
           <Button label="Start de rondleiding" />
-          <Button label="Bekijk de uitleg" textColor={COLORS.onPrimary} backgroundColor={COLORS.primary} borderColor={COLORS.onPrimary} />
+          <Button onPress={() => router.push("/explanation")} label="Bekijk de uitleg" textColor={COLORS.onPrimary} backgroundColor={COLORS.primary} borderColor={COLORS.onPrimary} />
         </View>
       </SafeAreaView>
   );
