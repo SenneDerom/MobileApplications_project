@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import {View, Text, StyleSheet, Image} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button } from "@/components/Button";
 
@@ -11,8 +11,12 @@ export default function HomeScreen() {
   return (
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.logo}>UCLL</Text>
-          <Text style={styles.subtitle}>Campus Connect - Leuven</Text>
+          <Image
+            source={require("../../public/icons/logo_ucll.png")}
+            style={styles.logo}
+            resizeMode="contain"
+            accessibilityLabel="UCLL logo"
+          />
         </View>
 
         <View style={styles.content}>
@@ -38,13 +42,11 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: "center",
-    marginTop: 24,
+    marginTop: 10,
   },
   logo: {
-    color: COLORS.onPrimary,
-    fontSize: 32,
-    fontFamily: "WorkSans_700Bold",
-    lineHeight: 38,
+    height: 200,
+    aspectRatio: 1264 / 1920,
   },
   subtitle: {
     color: COLORS.onPrimary,
@@ -52,12 +54,13 @@ const styles = StyleSheet.create({
     fontFamily: "WorkSans_600SemiBold",
     lineHeight: 14,
     letterSpacing: 0.66,
-    marginTop: 4,
+    marginTop: 12,
   },
   content: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    paddingBottom: 50,
   },
   title: {
     color: COLORS.onPrimary,
@@ -76,6 +79,6 @@ const styles = StyleSheet.create({
   },
   buttons: {
     gap: 12,
-    marginBottom: 24,
+    marginBottom: 50,
   },
 });
