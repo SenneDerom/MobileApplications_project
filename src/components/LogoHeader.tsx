@@ -1,11 +1,15 @@
 import {View, Image, StyleSheet} from "react-native";
 
-export function LogoHeader() {
+type LogoHeaderProps = {
+    height?: number;
+}
+
+export function LogoHeader({height = 200}: LogoHeaderProps) {
     return (
         <View style={styles.header}>
             <Image
                 source={require("../../public/icons/logo_ucll.png")}
-                style={styles.logo}
+                style={[styles.logo, {height}]}
                 resizeMode="contain"
                 accessibilityLabel="UCLL logo"
             />
@@ -19,7 +23,6 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     logo: {
-        height: 200,
         aspectRatio: 1264 / 1920,
     },
 });
