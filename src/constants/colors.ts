@@ -5,4 +5,6 @@ export const COLORS = {
     card: "#FFFFFF",
     onCard: "#002757",
     onCardMuted: "rgba(0, 39, 87, 0.75)",
+    footer: "#FFFFFF",
+    footerInactive: "#555555",
 };

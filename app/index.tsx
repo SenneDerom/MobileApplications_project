@@ -6,7 +6,7 @@ import {LogoHeader} from "@/components/LogoHeader";
 import {PageContainer} from "@/components/PageContainer";
 import {COLORS} from "@/constants/colors";
 
-export default function HomeScreen() {
+export default function LandingScreen() {
     return (
         <PageContainer>
             <LogoHeader />
