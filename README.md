@@ -126,11 +126,14 @@ Screens:
 
 > Cypress tests run against `http://localhost:8081`, so start the web server (`npm run web`) first.
 
-**Production web build** (used by Vercel, see `vercel.json`):
+**Production web build:**
 ```sh
 npx expo export -p web
 ```
 The output is written to `dist/`.
+
+**Deployment:** every push to `main` is built and published to GitHub Pages by `.github/workflows/deploy.yml`.
+The app is available at https://sennederom.github.io/MobileApplications_project/.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
