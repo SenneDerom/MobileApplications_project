@@ -19,7 +19,7 @@ const STEPS = [
     },
     {
         title: "Neem je tijd",
-        description: "Onderbreek de rondleiding wanneer je wil en zet ze later verder. Er is geen tijdslimiet.",
+        description: "Onderbreek de rondleiding wanneer je wil en zet ze later op de dag verder.",
     },
 ];
 
