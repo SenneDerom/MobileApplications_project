@@ -1,20 +1,32 @@
 {
-  "short_name": "MDN",
-  "name": "MDN Web Docs",
+  "name": "Campus Connect",
+  "short_name": "Campus Connect",
+  "description": "Ontdek de UCLL-campus tijdens de opendeurdag: scan de QR-codes en leer alles over je toekomstige opleiding.",
+  "lang": "nl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#E30147",
+  "background_color": "#E30147",
   "icons": [
     {
-      "src": "/favicon-192x192.png",
+      "src": "icons/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "/favicon-512x512.png",
+      "src": "icons/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "black",
-  "background_color": "white"
+  ]
 }
