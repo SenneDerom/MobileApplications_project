@@ -12,9 +12,10 @@ type StepListProps = {
     intro?: string;
     steps: Step[];
     footer?: string;
+    children?: React.ReactNode;
 }
 
-export function StepList({title, intro, steps, footer}: StepListProps) {
+export function StepList({title, intro, steps, footer, children}: StepListProps) {
     return (
         <ScrollView style={styles.scroll} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
             <Text style={styles.title}>{title}</Text>
@@ -25,6 +26,8 @@ export function StepList({title, intro, steps, footer}: StepListProps) {
             ))}
 
             {footer !== undefined && <Text style={styles.footer}>{footer}</Text>}
+
+            {children}
         </ScrollView>
     );
 }

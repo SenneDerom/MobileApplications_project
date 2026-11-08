@@ -31,11 +31,11 @@ export default function ExplanationScreen() {
                 intro="Ontdek de campus op je eigen tempo in vier eenvoudige stappen."
                 steps={STEPS}
                 footer="Veel plezier!"
-            />
-
-            <ButtonGroup>
-                <Button label="Start de rondleiding" />
-            </ButtonGroup>
+            >
+                <ButtonGroup>
+                    <Button label="Start de rondleiding" />
+                </ButtonGroup>
+            </StepList>
         </PageContainer>
     );
 }
