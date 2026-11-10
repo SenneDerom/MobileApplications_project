@@ -16,6 +16,7 @@ continue later that day.
 
 - [x] Landing page with intro and buttons to start the tour or read the explanation
 - [x] Explanation page ("Hoe werkt het?") with footer navigation
+- [x] Supabase database setup: have a running Supabase instance
 - [ ] Supabase setup: store the programmes and QR locations in a database
 - [ ] QR code scanning with the phone camera ("Start de rondleiding")
 - [ ] Programme pages: the information shown after scanning a QR code
