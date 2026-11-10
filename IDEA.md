@@ -22,6 +22,14 @@ continue later that day.
 - [ ] Programme pages: the information shown after scanning a QR code
 - [ ] Progress tracking: show which QR codes have already been scanned, so the tour can be
       paused and continued later
+- [x] Style guide: document the colours, typography (Work Sans), spacing and how buttons,
+      cards, icons and the footer look and behave (default, pressed, disabled), so every new
+      page follows the same patterns
+- [ ] Accessibility pass: screen reader labels and roles on all interactive elements, enough
+      colour contrast on the red background, and check that the layout still works with
+      enlarged system text
+- [ ] User testing: let a few real users (parents and fellow students) try the tour, note the pain
+      points and iterate on the design
 
 ## Competitors
 
