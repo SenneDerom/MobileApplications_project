@@ -10,7 +10,12 @@ type ButtonProps = {
 
 export function Button({label, backgroundColor = "#FFFFFF", textColor = "#E30147", borderColor, onPress}: ButtonProps) {
     return (
-        <Pressable onPress={onPress} style={[styles.button, {backgroundColor}, borderColor !== undefined && {borderWidth: 1, borderColor}]}>
+        <Pressable
+            onPress={onPress}
+            style={[styles.button, {backgroundColor}, borderColor !== undefined && {borderWidth: 1, borderColor}]}
+            accessibilityRole="button"
+            accessibilityLabel={label}
+        >
             <Text style={[styles.label, {color: textColor}]}>
                 {label}
             </Text>
