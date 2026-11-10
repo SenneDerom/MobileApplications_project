@@ -1,5 +1,6 @@
 import {View, StyleSheet} from "react-native";
 import {useSafeAreaInsets} from "react-native-safe-area-context";
+import {router} from "expo-router";
 import {FooterTab} from "@/components/FooterTab";
 import {ScanButton} from "@/components/ScanButton";
 import {COLORS} from "@/constants/colors";
@@ -15,7 +16,7 @@ export function Footer({activeTab}: FooterProps) {
 
     return (
         <View style={[styles.footer, {paddingBottom: insets.bottom + 8}]} accessibilityRole="tablist">
-            <FooterTab label="Start" icon="home-outline" isActive={activeTab === "home"} />
+            <FooterTab label="Start" icon="home-outline" isActive={activeTab === "home"} onPress={() => router.navigate("/")} />
             <ScanButton />
             <FooterTab label="Rondleiding" icon="footsteps-outline" isActive={activeTab === "tour"} />
         </View>
