@@ -25,7 +25,7 @@ const STEPS = [
 
 export default function ExplanationScreen() {
     return (
-        <PageContainer footer={<Footer />}>
+        <PageContainer footer={<Footer activeTab="explanation" />}>
             <StepList
                 title="Hoe werkt het?"
                 intro="Ontdek de campus op je eigen tempo in vier eenvoudige stappen."

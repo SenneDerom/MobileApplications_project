@@ -5,7 +5,7 @@ import {FooterTab} from "@/components/FooterTab";
 import {ScanButton} from "@/components/ScanButton";
 import {COLORS} from "@/constants/colors";
 
-export type FooterTabName = "home" | "tour";
+export type FooterTabName = "explanation" | "tour";
 
 type FooterProps = {
     activeTab?: FooterTabName;
@@ -16,7 +16,7 @@ export function Footer({activeTab}: FooterProps) {
 
     return (
         <View style={[styles.footer, {paddingBottom: insets.bottom + 8}]} accessibilityRole="tablist">
-            <FooterTab label="Start" icon="home-outline" isActive={activeTab === "home"} onPress={() => router.navigate("/")} />
+            <FooterTab label="Uitleg" icon="help-circle-outline" isActive={activeTab === "explanation"} onPress={() => router.navigate("/explanation")} />
             <ScanButton />
             <FooterTab label="Rondleiding" icon="footsteps-outline" isActive={activeTab === "tour"} />
         </View>
