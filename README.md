@@ -64,7 +64,7 @@ Screens:
 | Route | File | Description |
 |-------|------|-------------|
 | `/` | `app/index.tsx` | Landing page with intro and buttons to start the tour or open the explanation |
-| `/explanation` | `app/explanation.tsx` | "Hoe werkt het?" – step-by-step explanation of the tour, with footer navigation |
+| `/explanation` | `app/explanation.tsx` | Klik op de "Bekijk de uitleg" knop op de landingspagina om dit scherm te berkeiken<br/>Hoe werkt het?" – step-by-step explanation of the tour, with footer navigation |
 
 📄 **App idea:** see [IDEA.md](IDEA.md) for the target audience, roadmap and competitors.
 
