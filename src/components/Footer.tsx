@@ -18,7 +18,7 @@ export function Footer({activeTab}: FooterProps) {
         <View style={[styles.footer, {paddingBottom: insets.bottom + 8}]} accessibilityRole="tablist">
             <FooterTab label="Uitleg" icon="help-circle-outline" isActive={activeTab === "explanation"} onPress={() => router.navigate("/explanation")} />
             <ScanButton />
-            <FooterTab label="Rondleiding" icon="footsteps-outline" isActive={activeTab === "tour"} />
+            <FooterTab label="Rondleiding" icon="footsteps-outline" isActive={activeTab === "tour"} onPress={() => router.navigate("/tour")} />
         </View>
     );
 }
