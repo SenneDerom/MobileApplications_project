@@ -1,9 +1,8 @@
 export type TourStopStatus = "visited" | "next" | "upcoming";
 
 export type TourStop = {
-    id: string;
+    id: number;
     title: string;
     location: string;
-    walkMinutes: number;
     status: TourStopStatus;
 }

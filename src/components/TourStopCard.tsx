@@ -15,7 +15,7 @@ function getSubtitle(stop: TourStop): string {
         case "visited":
             return "Bezocht";
         case "next":
-            return `Volgende stop · ${stop.walkMinutes} min wandelen`;
+            return `Volgende stop · ${stop.location}`;
         case "upcoming":
             return stop.location;
     }
