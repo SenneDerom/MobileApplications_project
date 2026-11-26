@@ -1,5 +1,4 @@
 import {Pressable, View, Text, StyleSheet} from "react-native";
-import {Icon} from "@/components/primitives/Icon";
 import {TourStopBadge} from "@/components/TourStopBadge";
 import {COLORS} from "@/constants/colors";
 import type {TourStop} from "@/types/TourStop";
@@ -25,7 +24,6 @@ export function TourStopCard({number, stop, onPress}: TourStopCardProps) {
                 <Text style={styles.title}>{stop.title}</Text>
                 <Text style={styles.subtitle}>{subtitle}</Text>
             </View>
-            <Icon name="chevron-forward" size={20} color={COLORS.onCard} />
         </Pressable>
     );
 }
