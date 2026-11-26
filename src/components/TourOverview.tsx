@@ -13,7 +13,7 @@ type TourOverviewProps = {
 }
 
 export function TourOverview({title, intro, stops, remainingMinutes, onStopPress}: TourOverviewProps) {
-    const visited = stops.filter((stop) => stop.status === "visited").length;
+    const visited = stops.filter((stop) => stop.visited).length;
 
     return (
         <ScrollView style={styles.scroll} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>

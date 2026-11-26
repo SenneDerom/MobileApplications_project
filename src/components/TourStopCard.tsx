@@ -10,32 +10,20 @@ type TourStopCardProps = {
     onPress?: () => void;
 }
 
-function getSubtitle(stop: TourStop): string {
-    switch (stop.status) {
-        case "visited":
-            return "Bezocht";
-        case "next":
-            return `Volgende stop · ${stop.location}`;
-        case "upcoming":
-            return stop.location;
-    }
-}
-
 export function TourStopCard({number, stop, onPress}: TourStopCardProps) {
-    const isNext = stop.status === "next";
-    const subtitle = getSubtitle(stop);
+    const subtitle = stop.visited ? "Bezocht" : stop.location;
 
     return (
         <Pressable
             onPress={onPress}
-            style={({pressed}) => [styles.card, isNext && styles.nextCard, pressed && styles.pressed]}
+            style={({pressed}) => [styles.card, pressed && styles.pressed]}
             accessibilityRole="button"
             accessibilityLabel={`Stop ${number}: ${stop.title}. ${subtitle}`}
         >
-            <TourStopBadge number={number} status={stop.status} />
+            <TourStopBadge number={number} visited={stop.visited} />
             <View style={styles.textContainer}>
                 <Text style={styles.title}>{stop.title}</Text>
-                <Text style={[styles.subtitle, isNext && styles.nextSubtitle]}>{subtitle}</Text>
+                <Text style={styles.subtitle}>{subtitle}</Text>
             </View>
             <Icon name="chevron-forward" size={20} color={COLORS.onCard} />
         </Pressable>
@@ -58,10 +46,6 @@ const styles = StyleSheet.create({
         shadowOffset: {width: 0, height: 2},
         elevation: 3,
     },
-    nextCard: {
-        backgroundColor: COLORS.cardHighlight,
-        borderColor: COLORS.onPrimary,
-    },
     pressed: {
         opacity: 0.85,
     },
@@ -79,9 +63,5 @@ const styles = StyleSheet.create({
         fontSize: 13,
         fontFamily: "WorkSans_400Regular",
         lineHeight: 18,
-    },
-    nextSubtitle: {
-        color: COLORS.primary,
-        fontFamily: "WorkSans_600SemiBold",
     },
 });

@@ -1,15 +1,14 @@
 import {View, Text, StyleSheet} from "react-native";
 import {Icon} from "@/components/primitives/Icon";
 import {COLORS} from "@/constants/colors";
-import type {TourStopStatus} from "@/types/TourStop";
 
 type TourStopBadgeProps = {
     number: number;
-    status: TourStopStatus;
+    visited: boolean;
 }
 
-export function TourStopBadge({number, status}: TourStopBadgeProps) {
-    if (status === "visited") {
+export function TourStopBadge({number, visited}: TourStopBadgeProps) {
+    if (visited) {
         return (
             <View style={[styles.badge, styles.visited]}>
                 <Icon name="checkmark" size={20} color={COLORS.onPrimary} />
@@ -17,11 +16,9 @@ export function TourStopBadge({number, status}: TourStopBadgeProps) {
         );
     }
 
-    const isNext = status === "next";
-
     return (
-        <View style={[styles.badge, isNext ? styles.next : styles.upcoming]}>
-            <Text style={[styles.number, isNext ? styles.nextNumber : styles.upcomingNumber]}>{number}</Text>
+        <View style={[styles.badge, styles.notVisited]}>
+            <Text style={styles.number}>{number}</Text>
         </View>
     );
 }
@@ -37,22 +34,14 @@ const styles = StyleSheet.create({
     visited: {
         backgroundColor: COLORS.success,
     },
-    next: {
-        backgroundColor: COLORS.primary,
-    },
-    upcoming: {
+    notVisited: {
         borderWidth: 1,
         borderColor: COLORS.badgeBorder,
         backgroundColor: COLORS.card,
     },
     number: {
+        color: COLORS.onCardMuted,
         fontSize: 15,
         fontFamily: "WorkSans_700Bold",
-    },
-    nextNumber: {
-        color: COLORS.onPrimary,
-    },
-    upcomingNumber: {
-        color: COLORS.onCardMuted,
     },
 });

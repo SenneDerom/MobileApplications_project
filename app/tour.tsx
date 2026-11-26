@@ -6,22 +6,10 @@ import {PageHeader} from "@/components/PageHeader";
 import {TourOverview} from "@/components/TourOverview";
 import {COLORS} from "@/constants/colors";
 import {getSteps} from "@/services/stepService";
-import type {Step} from "@/types/Step";
 import type {TourStop} from "@/types/TourStop";
 
 const TITLE = "Rondleiding";
 const INTRO = "Volg de rode QR-borden over de campus. Scan bij elke stop om meer te ontdekken.";
-
-function toTourStops(steps: Step[]): TourStop[] {
-    const nextId = steps.find((step) => !step.visited)?.id;
-
-    return steps.map((step) => ({
-        id: step.id,
-        title: step.title,
-        location: step.location,
-        status: step.visited ? "visited" : step.id === nextId ? "next" : "upcoming",
-    }));
-}
 
 export default function TourScreen() {
     const [stops, setStops] = useState<TourStop[] | null>(null);
@@ -32,7 +20,7 @@ export default function TourScreen() {
 
         getSteps()
             .then((steps) => {
-                if (!cancelled) setStops(toTourStops(steps));
+                if (!cancelled) setStops(steps);
             })
             .catch((err: unknown) => {
                 console.error(err);
