@@ -9,10 +9,9 @@ type TourOverviewProps = {
     intro: string;
     stops: TourStop[];
     remainingMinutes?: number;
-    onStopPress?: (stop: TourStop) => void;
 }
 
-export function TourOverview({title, intro, stops, remainingMinutes, onStopPress}: TourOverviewProps) {
+export function TourOverview({title, intro, stops, remainingMinutes}: TourOverviewProps) {
     const visited = stops.filter((stop) => stop.visited).length;
 
     return (
@@ -20,12 +19,7 @@ export function TourOverview({title, intro, stops, remainingMinutes, onStopPress
             <PageHeader title={title} intro={intro} />
             <TourProgressCard visited={visited} total={stops.length} remainingMinutes={remainingMinutes} />
             {stops.map((stop, index) => (
-                <TourStopCard
-                    key={stop.id}
-                    number={index + 1}
-                    stop={stop}
-                    onPress={onStopPress !== undefined ? () => onStopPress(stop) : undefined}
-                />
+                <TourStopCard key={stop.id} number={index + 1} stop={stop} />
             ))}
         </ScrollView>
     );

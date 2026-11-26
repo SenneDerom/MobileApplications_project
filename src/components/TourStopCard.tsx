@@ -1,4 +1,4 @@
-import {Pressable, View, Text, StyleSheet} from "react-native";
+import {View, Text, StyleSheet} from "react-native";
 import {TourStopBadge} from "@/components/TourStopBadge";
 import {COLORS} from "@/constants/colors";
 import type {TourStop} from "@/types/TourStop";
@@ -6,17 +6,15 @@ import type {TourStop} from "@/types/TourStop";
 type TourStopCardProps = {
     number: number;
     stop: TourStop;
-    onPress?: () => void;
 }
 
-export function TourStopCard({number, stop, onPress}: TourStopCardProps) {
+export function TourStopCard({number, stop}: TourStopCardProps) {
     const subtitle = stop.visited ? "Bezocht" : stop.location;
 
     return (
-        <Pressable
-            onPress={onPress}
-            style={({pressed}) => [styles.card, pressed && styles.pressed]}
-            accessibilityRole="button"
+        <View
+            style={styles.card}
+            accessible
             accessibilityLabel={`Stop ${number}: ${stop.title}. ${subtitle}`}
         >
             <TourStopBadge number={number} visited={stop.visited} />
@@ -24,7 +22,7 @@ export function TourStopCard({number, stop, onPress}: TourStopCardProps) {
                 <Text style={styles.title}>{stop.title}</Text>
                 <Text style={styles.subtitle}>{subtitle}</Text>
             </View>
-        </Pressable>
+        </View>
     );
 }
 
@@ -43,9 +41,6 @@ const styles = StyleSheet.create({
         shadowRadius: 8,
         shadowOffset: {width: 0, height: 2},
         elevation: 3,
-    },
-    pressed: {
-        opacity: 0.85,
     },
     textContainer: {
         flex: 1,
