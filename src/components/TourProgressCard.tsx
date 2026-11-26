@@ -6,7 +6,7 @@ import {COLORS} from "@/constants/colors";
 type TourProgressCardProps = {
     visited: number;
     total: number;
-    remainingMinutes: number;
+    remainingMinutes?: number;
 }
 
 export function TourProgressCard({visited, total, remainingMinutes}: TourProgressCardProps) {
@@ -16,10 +16,12 @@ export function TourProgressCard({visited, total, remainingMinutes}: TourProgres
         <View style={styles.card}>
             <View style={styles.row}>
                 <Text style={styles.title}>{progressLabel}</Text>
-                <View style={styles.time} accessibilityLabel={`Nog ongeveer ${remainingMinutes} minuten`}>
-                    <Icon name="time-outline" size={16} color={COLORS.onCardMuted} />
-                    <Text style={styles.timeText}>± {remainingMinutes} min</Text>
-                </View>
+                {remainingMinutes !== undefined && (
+                    <View style={styles.time} accessibilityLabel={`Nog ongeveer ${remainingMinutes} minuten`}>
+                        <Icon name="time-outline" size={16} color={COLORS.onCardMuted} />
+                        <Text style={styles.timeText}>± {remainingMinutes} min</Text>
+                    </View>
+                )}
             </View>
             <ProgressBar value={visited} max={total} label={progressLabel} />
         </View>

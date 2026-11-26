@@ -8,7 +8,7 @@ type TourOverviewProps = {
     title: string;
     intro: string;
     stops: TourStop[];
-    remainingMinutes: number;
+    remainingMinutes?: number;
     onStopPress?: (stop: TourStop) => void;
 }
 

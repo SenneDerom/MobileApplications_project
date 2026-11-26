@@ -1,29 +1,76 @@
+import {useEffect, useState} from "react";
+import {ActivityIndicator, StyleSheet, Text, View} from "react-native";
 import {Footer} from "@/components/Footer";
 import {PageContainer} from "@/components/PageContainer";
+import {PageHeader} from "@/components/PageHeader";
 import {TourOverview} from "@/components/TourOverview";
+import {COLORS} from "@/constants/colors";
+import {getSteps} from "@/services/stepService";
+import type {Step} from "@/types/Step";
 import type {TourStop} from "@/types/TourStop";
 
-// Hardcoded until the stops and the visitor's progress come from Supabase.
-const STOPS: TourStop[] = [
-    {id: "onthaal", title: "Onthaal & inschrijvingen", location: "Gebouw A · gelijkvloers", walkMinutes: 0, status: "visited"},
-    {id: "bibliotheek", title: "Bibliotheek & studieplekken", location: "Gebouw A · eerste verdieping", walkMinutes: 1, status: "visited"},
-    {id: "it-labos", title: "IT-labo's", location: "Gebouw A · tweede verdieping", walkMinutes: 2, status: "next"},
-    {id: "makerspace", title: "Makerspace", location: "Gebouw B · gelijkvloers", walkMinutes: 3, status: "upcoming"},
-    {id: "studentenresto", title: "Studentenresto", location: "Gebouw C · gelijkvloers", walkMinutes: 2, status: "upcoming"},
-    {id: "sportzaal", title: "Sportzaal", location: "Gebouw D · gelijkvloers", walkMinutes: 4, status: "upcoming"},
-    {id: "auditorium", title: "Auditorium", location: "Gebouw B · eerste verdieping", walkMinutes: 4, status: "upcoming"},
-    {id: "studentenvoorzieningen", title: "Studentenvoorzieningen", location: "Gebouw C · eerste verdieping", walkMinutes: 2, status: "upcoming"},
-];
+const TITLE = "Rondleiding";
+const INTRO = "Volg de rode QR-borden over de campus. Scan bij elke stop om meer te ontdekken.";
+
+function toTourStops(steps: Step[]): TourStop[] {
+    const nextId = steps.find((step) => !step.visited)?.id;
+
+    return steps.map((step) => ({
+        id: step.id,
+        title: step.title,
+        location: step.location,
+        status: step.visited ? "visited" : step.id === nextId ? "next" : "upcoming",
+    }));
+}
 
 export default function TourScreen() {
+    const [stops, setStops] = useState<TourStop[] | null>(null);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        let cancelled = false;
+
+        getSteps()
+            .then((steps) => {
+                if (!cancelled) setStops(toTourStops(steps));
+            })
+            .catch((err: unknown) => {
+                console.error(err);
+                if (!cancelled) setError("De rondleiding kon niet geladen worden. Probeer het later opnieuw.");
+            });
+
+        return () => {
+            cancelled = true;
+        };
+    }, []);
+
     return (
         <PageContainer footer={<Footer activeTab="tour" />}>
-            <TourOverview
-                title="Rondleiding"
-                intro="Volg de rode QR-borden over de campus. Scan bij elke stop om meer te ontdekken."
-                stops={STOPS}
-                remainingMinutes={25}
-            />
+            {stops !== null ? (
+                <TourOverview title={TITLE} intro={INTRO} stops={stops} />
+            ) : (
+                <View style={styles.status}>
+                    <PageHeader title={TITLE} intro={INTRO} />
+                    {error !== null ? (
+                        <Text style={styles.error} accessibilityRole="alert">{error}</Text>
+                    ) : (
+                        <ActivityIndicator size="large" color={COLORS.onPrimary} accessibilityLabel="Rondleiding laden" />
+                    )}
+                </View>
+            )}
         </PageContainer>
     );
 }
+
+const styles = StyleSheet.create({
+    status: {
+        gap: 24,
+        paddingTop: 40,
+    },
+    error: {
+        color: COLORS.onPrimary,
+        fontSize: 15,
+        fontFamily: "WorkSans_600SemiBold",
+        lineHeight: 22,
+    },
+});
